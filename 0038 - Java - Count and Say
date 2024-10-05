@@ -1,0 +1,29 @@
+class Solution {
+    public String countAndSay(int n) {
+        
+        if (n == 1) {
+            return "1";
+        }
+        String ret = countAndSay(n - 1);
+        char num = ret.charAt(0);
+        char ch;
+        String ans = "";
+        int count = 0;
+
+        for (int i = 0; i < ret.length(); i++) {
+            ch = ret.charAt(i);
+
+            if (ch == num) {
+                count++;
+            } else {
+                ans += Integer.toString(count) + num;
+                count = 1;
+                num = ch;
+            }
+            if (i == ret.length() - 1) {
+                ans += Integer.toString(count) + num;
+            }
+        }
+        return ans;
+    }
+}
